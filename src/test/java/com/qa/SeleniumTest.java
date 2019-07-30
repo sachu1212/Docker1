@@ -1,0 +1,46 @@
+package com.qa;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import static org.junit.Assert.assertTrue;
+
+public class SeleniumTest
+{
+    private ChromeDriver driver;
+
+    @Before
+    public void setUp(){
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\tadas\\IdeaProjects\\seleniumTestExample\\src\\test\\java\\resources\\chromedriver.exe");
+        driver = new ChromeDriver();
+    }
+
+    @Test
+    public void exampleSeleniumTest()
+    {
+        try {
+            driver.manage().window().maximize();
+            driver.get("http://google.com");
+            Thread.sleep(500);
+            WebElement element = driver.findElement(By.name("q"));
+
+            assertTrue(element.isDisplayed());
+
+            element.sendKeys("funny cat pics");
+            Thread.sleep(500);
+            driver.findElement(By.name("btnK")).click();
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @After
+    public void tearDown(){
+        driver.close();
+    }
+}
