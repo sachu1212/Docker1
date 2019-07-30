@@ -9,19 +9,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.Assert.assertTrue;
 
-public class SeleniumTest
-{
+public class SeleniumTest {
     private ChromeDriver driver;
 
     @Before
-    public void setUp(){
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\tadas\\IdeaProjects\\seleniumTestExample\\src\\test\\java\\resources\\chromedriver.exe");
+    public void setUp() {
+        System.setProperty(
+                "webdriver.chrome.driver",
+                "C:\\Users\\tadas\\IdeaProjects\\seleniumTestExample\\src\\test\\java\\resources\\chromedriver.exe"
+        );
         driver = new ChromeDriver();
     }
 
     @Test
-    public void exampleSeleniumTest()
-    {
+    public void exampleSeleniumTest() {
         try {
             driver.manage().window().maximize();
             driver.get("http://google.com");
@@ -40,7 +41,7 @@ public class SeleniumTest
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         driver.close();
     }
 }
